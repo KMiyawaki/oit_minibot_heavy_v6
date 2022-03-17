@@ -1,0 +1,8 @@
+<launch>
+    <arg name="port" default="/dev/serial/by-id/usb-Silicon_Labs_CP2104_USB_to_UART_Bridge_Controller_00EB7263-if00-port0" />
+    <node pkg="tf" type="static_transform_publisher" name="imu2base_link" args="-0.095 0 0.66762 0 0 0 base_link imu_link 100" />
+    <node pkg="um7" type="um7_driver" name="um7_driver">
+	<param name="tf_ned_to_enu" value="false" />
+        <param name="port" value="$(arg port)" />
+    </node>
+</launch>

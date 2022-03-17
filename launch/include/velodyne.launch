@@ -1,0 +1,14 @@
+<launch>
+    <arg name="use_scan" default="false" />
+    <arg name="use_filter" default="false" />
+    <arg name="use_separate" default="false" />
+    
+    <node pkg="tf" type="static_transform_publisher" name="velodyne2base_link" args="-0.11 0 0.66537 0 0 0 base_link velodyne 100" />
+
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
+
+    <include if="$(arg use_scan)" file="$(find oit_minibot_heavy_v6)/launch/include/pointcloud_to_laserscan.launch">
+        <arg name="use_filter" value="$(arg use_filter)" />
+        <arg name="use_separate" value="$(arg use_separate)" />
+    </include>
+</launch>

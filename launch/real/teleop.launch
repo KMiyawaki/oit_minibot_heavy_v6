@@ -1,0 +1,30 @@
+<launch>
+  <arg name="roboclaw_settings" default="$(find oit_minibot_heavy_v6)/config/minibot_heavy_v6.yaml" />
+  <arg name="use_rplidar" default="true" />
+  <arg name="use_rviz" default="true" />
+  <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/simple.rviz" />
+  <arg name="rviz_required" default="true" />
+  <!-- mouse joy key none -->
+  <arg name="teleop" default="joy" />
+  <arg name="rosbag" default="false" />
+  <arg name="use_velodyne" default="true" />
+  <arg name="use_scan" default="false" />
+  <arg name="use_imu" default="true" />
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
+    <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />
+    <arg name="use_rplidar" value="$(arg use_rplidar)" />
+    <arg name="use_rviz" value="$(arg use_rviz)" />
+    <arg name="rviz_conf" value="$(arg rviz_conf)" />
+    <arg name="rviz_required" value="$(arg rviz_required)" />
+    <arg name="use_velodyne" value="$(arg use_velodyne)" />
+    <arg name="use_scan" value="$(arg use_scan)" />
+    <arg name="use_imu" value="$(arg use_imu)" />
+  </include>
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/teleop_select.launch">
+    <arg name="teleop" value="$(arg teleop)" />
+  </include>
+
+  <include if="$(arg rosbag)" file="$(find oit_minibot_heavy_v6)/launch/record_rosbag.launch" required="true"/>
+</launch>

@@ -1,0 +1,16 @@
+<launch>
+  <arg name="bag" default="" />
+  <arg name="bag_path" default="$(find oit_minibot_heavy_v6)/bags/$(arg bag)" />
+  <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/mapping.rviz" />
+  <arg name="rate" default="1" />
+  <arg name="tf_remap" default="/tf" />
+  <arg name="imu" default="/imu/data" />
+  
+  <node name="playbag" pkg="rosbag" type="play" args="-r $(arg rate) --clock $(arg bag_path) --topic /velodyne_points /imu" required="false">
+    <remap from="/tf" to="$(arg tf_remap)" />
+    <remap from="/imu" to="$(arg imu)" />
+  </node>
+
+  <include name="lego_loam" file="$(find lego_loam)/launch/run.launch">
+  </include>
+</launch>

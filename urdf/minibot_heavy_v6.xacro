@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="minibot_heavy_v6">
+  <xacro:property name="body_d" value="0.44" />
+  <xacro:property name="body_w" value="0.34" />
+  <xacro:property name="body_h" value="0.5285" />
+  <xacro:property name="body_x" value="${0.125-body_d/2}" /><!-- -0.095 -->
+  <xacro:property name="body_z" value="${body_h/2}" />
+
+  <link name="base_link">
+    <collision>
+      <origin rpy="0 0 0" xyz="${body_x} 0 ${body_z}"/>
+      <geometry>
+        <box size="${body_d} ${body_w} ${body_h}"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="${body_x} 0 ${body_z}"/>
+      <geometry>
+        <box size="${body_d} ${body_w} ${body_h}"/>
+      </geometry>
+      <material name="vehicle_mat">
+        <color rgba="1.0 0.0 0.0 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+  <xacro:property name="laser_d" value="0.06" />
+  <xacro:property name="laser_w" value="0.06" />
+  <xacro:property name="laser_h" value="0.09" />
+  <xacro:property name="laser1_x" value="0.0" />
+  <xacro:property name="laser1_z" value="${body_h}" />
+
+  <joint name="laser1_joint" type="fixed">
+    <origin xyz="${laser1_x} 0 ${laser1_z}" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="base_laser_link"/>
+  </joint>
+
+  <link name="base_laser_link">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="${laser_d} ${laser_w} ${laser_h}"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="${laser_d} ${laser_w} ${laser_h}"/>
+      </geometry>
+      <material name="laser_mat">
+        <color rgba="0.0 0.0 0.0 0.8"/>
+      </material>
+    </visual>
+  </link>
+</robot>

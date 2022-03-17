@@ -1,0 +1,37 @@
+<launch>
+  <arg name="initial_pose_x" default="0" />
+  <arg name="initial_pose_y" default="0" />
+  <arg name="initial_pose_a" default="0" />
+  <arg name="map_dir" default="$(find oit_minibot_heavy_v6)/maps" />
+  <arg name="map_name" default="oit_hirakata_2gou4f" />
+  <arg name="map_path" default="$(arg map_dir)/$(arg map_name).yaml" />
+  <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
+  <arg name="rviz_required" default="true" />
+  <arg name="rosbag" default="false" />
+  <arg name="use_rplidar" default="true" />
+  <arg name="use_scan" default="true" />
+  <arg name="use_imu" default="true" />
+  <arg name="use_filter" default="true" />
+  <arg name="use_separate" default="true" />
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
+    <arg name="rviz_conf" value="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
+    <arg name="use_rplidar" value="$(arg use_rplidar)" />
+    <arg name="use_scan" value="$(arg use_scan)" />
+    <arg name="use_imu" value="$(arg use_imu)" />
+    <arg name="use_filter" value="$(arg use_filter)" />
+    <arg name="use_separate" value="$(arg use_separate)" />
+  </include>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)" respawn="false" />
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/amcl.launch">
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+    <arg name="use_separate" value="$(arg use_separate)" />
+  </include>
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/move_base/move_base.xml"/>
+  
+  <include if="$(arg rosbag)" file="$(find oit_minibot_heavy_v6)/launch/record_rosbag.launch" required="true"/>
+</launch>

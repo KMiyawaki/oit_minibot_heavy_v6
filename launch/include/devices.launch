@@ -1,0 +1,34 @@
+<launch>
+  <arg name="roboclaw_settings" default="$(find oit_minibot_heavy_v6)/config/minibot_heavy_v6.yaml" />
+  <arg name="use_rplidar" default="true" />
+  <arg name="use_rviz" default="true" />
+  <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/simple.rviz" />
+  <arg name="rviz_required" default="true" />
+  <arg name="use_velodyne" default="true" />
+  <arg name="use_scan" default="true" />
+  <arg name="use_imu" default="true" />
+  <arg name="use_filter" default="false" />
+  <arg name="use_separate" default="false" />
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/roboclaw.launch">
+    <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />
+  </include>
+
+  <include if="$(arg use_rplidar)" file="$(find oit_minibot_heavy_v6)/launch/include/rplidar.launch">
+    <arg name="use_separate" value="$(arg use_separate)" />
+  </include>
+
+  <include if="$(arg use_velodyne)" file="$(find oit_minibot_heavy_v6)/launch/include/velodyne.launch">
+    <arg name="use_scan" value="$(arg use_scan)" />
+    <arg name="use_filter" value="$(arg use_filter)" />
+    <arg name="use_separate" value="$(arg use_separate)" />
+  </include>
+
+  <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v6)/launch/include/wit_motion.launch" />
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/state_publisher.launch"/>
+
+  <group if="$(arg use_rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf)" required="$(arg rviz_required)" />
+  </group>
+</launch>

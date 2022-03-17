@@ -1,0 +1,7 @@
+<launch>
+    <arg name="port" default="/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0" />
+    <node pkg="tf" type="static_transform_publisher" name="imu2base_link" args="-0.095 0 0.66762 0 0 0 base_link imu_link 100" />
+    <include file="$(find wit_node)/launch/wit.launch">
+        <arg name="port" value="$(arg port)" />
+    </include>
+</launch>

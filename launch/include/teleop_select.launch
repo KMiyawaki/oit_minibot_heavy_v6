@@ -1,0 +1,35 @@
+<launch>
+  <arg name="topic_cmd_vel" default="/cmd_vel" />
+  <!-- mouse joy key none -->
+  <arg name="teleop" default="joy" />
+  <arg name="joy_dev" default="/dev/input/js0" />
+  <arg name="joy_conf" default="$(find oit_minibot_heavy_v6)/config/my_elecom.yaml" />
+  <arg name="key_teleop_max_linear" default="0.15" />
+  <arg name="key_teleop_max_angular" default="$(eval 30 * 3.141592653589793 / 180.0)" />
+
+  <group if="$(eval teleop=='joy')">
+    <node pkg="joy" type="joy_node" name="joy_node">
+      <param name="dev" value="$(arg joy_dev)" />
+      <param name="deadzone" value="0.1" />
+      <param name="autorepeat_rate" value="20" />
+    </node>
+    <node pkg="teleop_twist_joy" name="teleop_twist_joy" type="teleop_node">
+      <rosparam command="load" file="$(arg joy_conf)" />
+    </node>
+  </group>
+
+  <group if="$(eval teleop=='mouse')">
+    <node pkg="mouse_teleop" type="mouse_teleop.py" name="mouse_teleop">
+      <remap from="/mouse_vel" to="$(arg topic_cmd_vel)" />
+    </node>
+  </group>
+
+  <group if="$(eval teleop=='key')">
+    <node pkg="key_teleop" type="key_teleop.py" name="key_teleop" launch-prefix="xterm -e">
+      <remap from="key_vel" to="$(arg topic_cmd_vel)" />
+      <param name="forward_rate" value="$(arg key_teleop_max_linear)" />
+      <param name="backward_rate" value="$(arg key_teleop_max_linear)" />
+      <param name="rotation_rate" value="$(arg key_teleop_max_angular)" />
+    </node>
+  </group>
+</launch>

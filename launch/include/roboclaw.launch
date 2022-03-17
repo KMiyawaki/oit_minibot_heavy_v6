@@ -1,0 +1,19 @@
+<launch>
+  <arg name="roboclaw_settings" default="$(find oit_minibot_heavy_v6)/config/minibot_heavy_v6.yaml" />
+
+  <node pkg="oit_roboclaw_driver" type="oit_roboclaw_driver_node.py" name="oit_roboclaw_driver_node" output="screen">
+    <!-- load from yaml -->
+    <rosparam command="load" file="$(arg roboclaw_settings)" />
+  </node>
+  <node pkg="oit_roboclaw_driver" type="oit_roboclaw_2_wheels.py" name="oit_roboclaw_2_wheels" output="screen">
+    <param name="~process_rate" value="20"/>
+    <param name="~tread" value="0.347"/>
+    <!-- 100:1 Metal Gearmotor 37Dx73L mm 12V with 64 CPR Encoder -->
+    <!-- Ticks: 102.08 * 64 = 6533.12 -->
+    <!-- Wheel: 0.2 * Pi = 0.6283185307179586 -->
+    <param name="~ticks_per_meter" value="10397.783418125233"/>
+    <param name="~linear_max" value="0.6"/>
+    <!--Radians-->
+    <param name="~angular_max" value="1.05"/>
+  </node>
+</launch>

@@ -1,0 +1,28 @@
+<launch>
+  <arg name="initial_pose_x" default="8" />
+  <arg name="initial_pose_y" default="0.5" />
+  <arg name="initial_pose_a" default="$(eval 90.0 / 180.0 * 3.1415)" />
+  <arg name="map_dir" default="$(find oit_minibot_heavy_v6)/maps" />
+  <arg name="map_name" default="HRC" />
+  <arg name="map_path" default="$(arg map_dir)/$(arg map_name).yaml" />
+  <arg name="use_rviz" default="true" />
+  <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
+  <arg name="rviz_required" default="true" />
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/stage.launch">
+    <arg name="map_dir" value="$(arg map_dir)" />
+    <arg name="map_name" value="$(arg map_name)" />
+    <arg name="use_rviz" value="$(arg use_rviz)" />
+    <arg name="rviz_conf" value="$(arg rviz_conf)" />
+  </include>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)" respawn="false" />
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/amcl.launch">
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+  </include>
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/move_base/move_base.xml"/>
+</launch>

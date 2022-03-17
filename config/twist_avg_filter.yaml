@@ -1,0 +1,8 @@
+num_samples: 5
+weights: ''
+
+linear_vel_max: 1.2
+linear_acc_max: 1.2
+angular_vel_max: 4.71239
+angular_acc_max: 4.71239
+timeout: 0.25

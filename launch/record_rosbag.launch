@@ -1,0 +1,10 @@
+<launch>
+  <arg name="minimal" default="true" />
+  <arg name="minimal_targets" default="'/(velodyne_points|scan|rplidar_scan|clock|cmd_vel|odom|tf|tf_static|imu)'" />
+  <group if="$(arg minimal)">
+    <node pkg="rosbag" type="record" name="record" output="screen" args="-j -e $(arg minimal_targets) -o /media/jetson/7C60-5AA0/"/>
+  </group>
+  <group unless="$(arg minimal)">
+    <node pkg="rosbag" type="record" name="record" output="screen" args="-a -j -x '(.*)/compressed(.*)' -o /media/jetson/A1CA-0F55/"/>
+  </group>
+</launch>

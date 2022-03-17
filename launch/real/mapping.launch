@@ -1,0 +1,31 @@
+<launch>
+  <arg name="xmin" default="-5"/>
+  <arg name="xmax" default="5"/>
+  <arg name="ymin" default="-5"/>
+  <arg name="ymax" default="5"/>
+  <arg name="delta" default="0.05"/>
+  <arg name="maxUrange" default="80" />
+  <arg name="maxRange" default="100" />
+  <arg name="rosbag" default="false" />
+  <arg name="use_scan" default="true" />
+  <arg name="use_imu" default="true" />
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/real/teleop.launch">
+    <arg name="rviz_conf" value="$(find oit_minibot_heavy_v6)/config/rviz/mapping.rviz" />
+    <arg name="use_scan" value="$(arg use_scan)" />
+    <arg name="use_imu" value="$(arg use_imu)" />
+  </include>
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <remap from="scan" to="base_scan" />
+    <param name="xmin" value="$(arg xmin)" />
+    <param name="xmax" value="$(arg xmax)" />
+    <param name="ymin" value="$(arg ymin)" />
+    <param name="ymax" value="$(arg ymax)" />
+    <param name="delta" value="$(arg delta)" />
+    <param name="maxUrange" value="$(arg maxUrange)" />
+    <param name="maxRange" value="$(arg maxRange)" />
+  </node>
+  
+  <include if="$(arg rosbag)" file="$(find oit_minibot_heavy_v6)/launch/record_rosbag.launch" required="true"/>
+</launch>

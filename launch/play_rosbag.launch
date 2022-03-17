@@ -1,0 +1,15 @@
+<launch>
+  <arg name="bag" default="" />
+  <arg name="bag_path" default="$(find oit_minibot_heavy_v6)/bags/$(arg bag)" />
+  <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/simple.rviz" />
+  <arg name="rate" default="1" />
+  <arg name="robot_model" default="$(find oit_minibot_heavy_v6)/urdf/minibot_heavy_v6.xacro"/>
+  <arg name="tf_remap" default="/tf" />
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg robot_model)" />
+  <param name="use_sim_time" value="true" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf)" required="true" />
+  <node name="playbag" pkg="rosbag" type="play" args="-r $(arg rate) --clock $(arg bag_path)" required="false">
+    <remap from="/tf" to="$(arg tf_remap)" />
+  </node>
+</launch>
