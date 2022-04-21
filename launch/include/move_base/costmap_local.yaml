@@ -4,8 +4,8 @@ local_costmap:
   update_frequency: 3.0
   publish_frequency: 1.0
   rolling_window: true
-  width: 5 # 3
-  height: 5 # 3
+  width: 7 # 3
+  height: 7 # 3
   resolution: 0.1
   plugins:
    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
