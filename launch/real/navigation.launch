@@ -12,7 +12,7 @@
   <arg name="use_scan" default="true" />
   <arg name="use_imu" default="true" />
   <arg name="use_filter" default="true" />
-  <arg name="use_separate" default="true" />
+  <arg name="use_separate" default="false" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
     <arg name="rviz_conf" value="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
