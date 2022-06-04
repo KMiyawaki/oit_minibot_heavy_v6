@@ -10,6 +10,7 @@
   <arg name="use_velodyne" default="true" />
   <arg name="use_scan" default="false" />
   <arg name="use_imu" default="true" />
+  <arg name="use_zed2" default="true" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
     <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />
@@ -20,6 +21,7 @@
     <arg name="use_velodyne" value="$(arg use_velodyne)" />
     <arg name="use_scan" value="$(arg use_scan)" />
     <arg name="use_imu" value="$(arg use_imu)" />
+    <arg name="use_zed2" value="$(arg use_zed2)" />
   </include>
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/teleop_select.launch">

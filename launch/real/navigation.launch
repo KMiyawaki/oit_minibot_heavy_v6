@@ -13,6 +13,8 @@
   <arg name="use_imu" default="true" />
   <arg name="use_filter" default="true" />
   <arg name="use_separate" default="false" />
+  <arg name="use_zed2" default="true" />
+  <arg name="use_velodyne" default="true" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
     <arg name="rviz_conf" value="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
@@ -21,6 +23,8 @@
     <arg name="use_imu" value="$(arg use_imu)" />
     <arg name="use_filter" value="$(arg use_filter)" />
     <arg name="use_separate" value="$(arg use_separate)" />
+    <arg name="use_zed2" value="$(arg use_zed2)" />
+    <arg name="use_velodyne" value="$(arg use_velodyne)" />
   </include>
 
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)" respawn="false" />
