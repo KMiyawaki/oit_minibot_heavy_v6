@@ -7,10 +7,10 @@
   <!-- mouse joy key none -->
   <arg name="teleop" default="joy" />
   <arg name="rosbag" default="false" />
-  <arg name="use_velodyne" default="true" />
+  <arg name="use_velodyne" default="false" />
   <arg name="use_scan" default="false" />
-  <arg name="use_imu" default="true" />
-  <arg name="use_zed2" default="true" />
+  <arg name="use_imu" default="false" />
+  <arg name="use_zed2" default="false" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
     <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />

@@ -1,6 +1,6 @@
 <launch>
   <arg name="minimal" default="true" />
-  <arg name="minimal_targets" default="'/(velodyne_points|scan|rplidar_scan|clock|cmd_vel|odom|tf|tf_static|imu)'" />
+  <arg name="minimal_targets" default="'/(rplidar_scan|base_scan|clock|cmd_vel|odom|tf|tf_static)'" />
   <group if="$(arg minimal)">
     <node pkg="rosbag" type="record" name="record" output="screen" args="-j -e $(arg minimal_targets)"/>
   </group>

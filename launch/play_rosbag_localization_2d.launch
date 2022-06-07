@@ -9,15 +9,10 @@
   <arg name="map_name" default="oit1" />
   <arg name="map_path" default="$(arg map_dir)/$(arg map_name).yaml" />
   <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
-  <arg name="use_filter" default="false" />
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf)" required="true" />
 
   <node name="playbag" pkg="rosbag" type="play" args="-r $(arg rate) --clock $(arg bag_path)" required="false" />
-
-  <include file="$(find oit_minibot_heavy_v6)/launch/include/pointcloud_to_laserscan.launch">
-    <arg name="use_filter" value="$(arg use_filter)" />
-  </include>
 
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)" respawn="false" />
 

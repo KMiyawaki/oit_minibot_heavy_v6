@@ -8,9 +8,6 @@
   <arg name="ymin" default="-5"/>
   <arg name="ymax" default="5"/>
   <arg name="delta" default="0.05"/>
-  <arg name="maxUrange" default="80" />
-  <arg name="maxRange" default="100" />
-  <arg name="use_filter" default="false" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/play_rosbag.launch">
     <arg name="bag_path" value="$(arg bag_path)" />
@@ -24,12 +21,6 @@
     <param name="ymin" value="$(arg ymin)" />
     <param name="ymax" value="$(arg ymax)" />
     <param name="delta" value="$(arg delta)" />
-    <param name="maxUrange" value="$(arg maxUrange)" />
-    <param name="maxRange" value="$(arg maxRange)" />
   </node>
-
-  <include file="$(find oit_minibot_heavy_v6)/launch/include/pointcloud_to_laserscan.launch">
-    <param name="use_filter" value="$(arg use_filter)" />
-  </include>
   
 </launch>

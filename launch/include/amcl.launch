@@ -2,10 +2,8 @@
   <arg name="initial_pose_x" default="0" />
   <arg name="initial_pose_y" default="0" />
   <arg name="initial_pose_a" default="0" />
-  <arg name="use_separate" default="false" />
   <node pkg="amcl" type="amcl" name="amcl" respawn="true">
-    <remap if="$(arg use_separate)" from="scan" to="amcl_scan" />
-    <remap unless="$(arg use_separate)" from="scan" to="base_scan" />
+    <remap from="scan" to="base_scan" />
     <!-- Publish scans from best pose at a max of 10 Hz -->
     <param name="odom_model_type" value="diff"/>
     <param name="odom_alpha5" value="0.1"/> <!-- for omni -->

@@ -4,14 +4,12 @@
   <arg name="ymin" default="-5"/>
   <arg name="ymax" default="5"/>
   <arg name="delta" default="0.05"/>
-  <arg name="maxUrange" default="80" />
-  <arg name="maxRange" default="100" />
   <arg name="rosbag" default="false" />
-  <arg name="use_scan" default="true" />
-  <arg name="use_imu" default="true" />
+  <arg name="use_scan" default="false" />
+  <arg name="use_imu" default="false" />
   <arg name="use_rplidar" default="true" />
-  <arg name="use_zed2" default="true" />
-  <arg name="use_velodyne" default="true" />
+  <arg name="use_zed2" default="false" />
+  <arg name="use_velodyne" default="false" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/real/teleop.launch">
     <arg name="rviz_conf" value="$(find oit_minibot_heavy_v6)/config/rviz/mapping.rviz" />
@@ -29,8 +27,6 @@
     <param name="ymin" value="$(arg ymin)" />
     <param name="ymax" value="$(arg ymax)" />
     <param name="delta" value="$(arg delta)" />
-    <param name="maxUrange" value="$(arg maxUrange)" />
-    <param name="maxRange" value="$(arg maxRange)" />
   </node>
   
   <include if="$(arg rosbag)" file="$(find oit_minibot_heavy_v6)/launch/record_rosbag.launch" required="true"/>
