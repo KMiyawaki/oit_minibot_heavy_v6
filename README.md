@@ -1,6 +1,6 @@
 # Minibot v6
 
-このサイトは [GitHub Pages](https://pages.github.com/) を使って構築されています。
+このREADMEは [Minibot v3 README](https://github.com/KMiyawaki/oit_navigation_minibot_03) を参考に構築しています。
 
 [中之島ロボットチャレンジ](https://www.nakanoshima-rc.jp/)用小型ロボットの説明。
 
@@ -39,7 +39,7 @@ $ git branch
 
 それぞれに[`rosbag`](https://qiita.com/srs/items/f6e2c36996e34bcc4d73)の記録ありとなしのバージョンがある。 
 記録された`rosbag`は`~/.ros`ディレクトリに保存される。なお、容量が足りない場合は外付けSDカードに保存するように編集すること。参考：[rosbag Commandline](http://wiki.ros.org/rosbag/Commandline)
-`rosbag`を記録した場合は**必ず`stop_recording.sh`を実行し、記録を停止してからもともとのスクリプトを終了させること**。`rosbag`の容量によっては少し保存されるまでに時間がかかるので`rosbag`に拡張子`active`が付かなくなるまで待つこと。
+`rosbag`を記録した場合は**必ず`stop_recording.sh`を実行し、記録を停止してからもともとのスクリプトを終了させること**。
 
 ```shell
 $ cp ~/catkin_ws/src/oit_minibot_heavy_v6/desktop_scripts/*.sh ~/ # ホームディレクトリに起動用の各種スクリプトを配置
@@ -154,6 +154,7 @@ $ ls *.active
 ```
 
 原因は`stop_recording.sh`を実行していないか、実行後にロボットの起動スクリプトの停止が早すぎたかのいずれかである。`active`ファイルを完全な`bag`ファイルに変換することも不可能ではないが、時間がかかるので、あきらめてもう一度きちんと記録しなおすこと。
+`rosbag`の容量によっては少し保存されるまでに時間がかかるので`rosbag`に拡張子`active`が付かなくなるまで待つこと。
 
 `bag`ファイルを再生するスクリプトはこのパッケージに用意してある。再生のために`bag`ファイルを移動させる。
 
