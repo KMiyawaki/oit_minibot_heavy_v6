@@ -1,6 +1,6 @@
 <launch>
   <arg name="minimal" default="true" />
-  <arg name="minimal_targets" default="'/(velodyne_packets|velodyne_points|camera/color/camera_info|camera/color/image_raw/compressed|scan|rplidar_scan|clock|cmd_vel|odom|tf|tf_static|imu)'" />
+  <arg name="minimal_targets" default="'/(velodyne_points|camera/color/camera_info|camera/color/image_raw/compressed|scan|rplidar_scan|clock|cmd_vel|odom|tf|tf_static|imu)'" />
   <group if="$(arg minimal)">
     <node pkg="rosbag" type="record" name="record" output="screen" args="-j -e $(arg minimal_targets)"/>
   </group>
