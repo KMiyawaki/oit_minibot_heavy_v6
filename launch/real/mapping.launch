@@ -11,6 +11,7 @@
   <arg name="use_imu" default="true" />
   <arg name="use_rplidar" default="true" />
   <arg name="use_zed2" default="true" />
+  <arg name="use_realsense" default="true" />
   <arg name="use_velodyne" default="true" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/real/teleop.launch">
@@ -19,6 +20,7 @@
     <arg name="use_imu" value="$(arg use_imu)" />
     <arg name="use_rplidar" value="$(arg use_rplidar)" />
     <arg name="use_zed2" value="$(arg use_zed2)" />
+    <arg name="use_realsense" value="$(arg use_realsense)" />
     <arg name="use_velodyne" value="$(arg use_velodyne)" />
   </include>
 

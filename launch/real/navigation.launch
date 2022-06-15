@@ -14,6 +14,7 @@
   <arg name="use_filter" default="false" />
   <arg name="use_separate" default="false" />
   <arg name="use_zed2" default="true" />
+  <arg name="use_realsense" default="true" />
   <arg name="use_velodyne" default="true" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
@@ -24,6 +25,7 @@
     <arg name="use_filter" value="$(arg use_filter)" />
     <arg name="use_separate" value="$(arg use_separate)" />
     <arg name="use_zed2" value="$(arg use_zed2)" />
+    <arg name="use_realsense" value="$(arg use_realsense)" />
     <arg name="use_velodyne" value="$(arg use_velodyne)" />
   </include>
 

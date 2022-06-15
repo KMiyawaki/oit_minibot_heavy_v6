@@ -10,6 +10,7 @@
   <arg name="use_filter" default="false" />
   <arg name="use_separate" default="false" />
   <arg name="use_zed2" default="true" />
+  <arg name="use_realsense" default="true" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/roboclaw.launch">
     <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />
@@ -28,6 +29,8 @@
   <include if="$(arg use_imu)" file="$(find oit_minibot_heavy_v6)/launch/include/wit_motion.launch" />
 
   <include if="$(arg use_zed2)" file="$(find oit_minibot_heavy_v6)/launch/include/zed2.launch" />
+
+  <include if="$(arg use_realsense)" file="$(find oit_minibot_heavy_v6)/launch/include/realsense.launch" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/state_publisher.launch"/>
 
