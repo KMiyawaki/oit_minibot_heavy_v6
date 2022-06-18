@@ -1,6 +1,6 @@
 <launch>
   <arg name="roboclaw_settings" default="$(find oit_minibot_heavy_v6)/config/minibot_heavy_v6.yaml" />
-  <arg name="use_rplidar" default="true" />
+  <arg name="use_rplidar" default="false" />
   <arg name="use_rviz" default="true" />
   <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/simple.rviz" />
   <arg name="rviz_required" default="true" />
@@ -10,7 +10,7 @@
   <arg name="use_velodyne" default="true" />
   <arg name="use_scan" default="false" />
   <arg name="use_imu" default="true" />
-  <arg name="use_zed2" default="true" />
+  <arg name="use_zed2" default="false" />
   <arg name="use_realsense" default="true" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">

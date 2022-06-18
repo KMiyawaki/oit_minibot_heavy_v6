@@ -8,12 +8,12 @@
   <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
   <arg name="rviz_required" default="true" />
   <arg name="rosbag" default="false" />
-  <arg name="use_rplidar" default="true" />
+  <arg name="use_rplidar" default="false" />
   <arg name="use_scan" default="true" />
   <arg name="use_imu" default="true" />
   <arg name="use_filter" default="false" />
   <arg name="use_separate" default="false" />
-  <arg name="use_zed2" default="true" />
+  <arg name="use_zed2" default="false" />
   <arg name="use_realsense" default="true" />
   <arg name="use_velodyne" default="true" />
 
