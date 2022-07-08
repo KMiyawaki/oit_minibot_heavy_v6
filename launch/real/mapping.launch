@@ -8,7 +8,7 @@
   <arg name="maxRange" default="100" />
   <arg name="rosbag" default="false" />
   <arg name="use_scan" default="true" />
-  <arg name="use_imu" default="true" />
+  <arg name="use_imu" default="false" />
   <arg name="use_rplidar" default="false" />
   <arg name="use_zed2" default="false" />
   <arg name="use_realsense" default="true" />

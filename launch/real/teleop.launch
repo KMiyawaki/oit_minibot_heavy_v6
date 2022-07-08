@@ -9,7 +9,7 @@
   <arg name="rosbag" default="false" />
   <arg name="use_velodyne" default="true" />
   <arg name="use_scan" default="false" />
-  <arg name="use_imu" default="true" />
+  <arg name="use_imu" default="false" />
   <arg name="use_zed2" default="false" />
   <arg name="use_realsense" default="true" />
 
