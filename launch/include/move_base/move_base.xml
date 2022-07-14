@@ -1,4 +1,9 @@
 <launch>
+
+  <!-- set topics -->
+  <arg name="map_keepout" default="map_keepout" />
+  <arg name="use_keepout" default="false" />
+
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="base_global_planner" value="navfn/NavfnROS"/>
     <!-- <param name="base_global_planner" value="carrot_planner/CarrotPlanner" /> -->
@@ -9,5 +14,8 @@
     <rosparam file="$(find oit_minibot_heavy_v6)/launch/include/move_base/costmap_global.yaml" command="load" />
     <rosparam file="$(find oit_minibot_heavy_v6)/launch/include/move_base/planner_local.yaml" command="load" />
     <rosparam file="$(find oit_minibot_heavy_v6)/launch/include/move_base/planner_global.yaml" command="load" />
+
+    <param if="$(arg use_keepout)" name="global_costmap/static_layer/map_topic" value="$(arg map_keepout)"/>
+    <param if="$(arg use_keepout)" name="local_costmap/static_layer/map_topic" value="$(arg map_keepout)"/>
   </node>  
 </launch>

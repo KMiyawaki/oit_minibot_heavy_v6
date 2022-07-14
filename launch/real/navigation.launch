@@ -5,6 +5,8 @@
   <arg name="map_dir" default="$(find oit_minibot_heavy_v6)/maps" />
   <arg name="map_name" default="oit_hirakata_2gou4f" />
   <arg name="map_path" default="$(arg map_dir)/$(arg map_name).yaml" />
+  <arg name="map_keepout_name" default="$(arg map_name)_keepout" />
+  <arg name="map_keepout_path" default="$(arg map_dir)/$(arg map_keepout_name).yaml" />
   <arg name="rviz_conf" default="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
   <arg name="rviz_required" default="true" />
   <arg name="rosbag" default="false" />
@@ -16,6 +18,9 @@
   <arg name="use_zed2" default="false" />
   <arg name="use_realsense" default="true" />
   <arg name="use_velodyne" default="true" />
+  <arg name="use_keepout" default="false" />
+  <arg name="map_keepout" default="map_keepout" />
+  <arg name="static_map_keepout" default="static_map_keepout" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
     <arg name="rviz_conf" value="$(find oit_minibot_heavy_v6)/config/rviz/navigation.rviz" />
@@ -37,7 +42,14 @@
     <arg name="use_separate" value="$(arg use_separate)" />
   </include>
 
-  <include file="$(find oit_minibot_heavy_v6)/launch/include/move_base/move_base.xml"/>
+  <node if="$(arg use_keepout)" name="map_keepout_server" pkg="map_server" type="map_server" args="$(arg map_keepout_path)" >
+    <remap from="map" to="$(arg map_keepout)" />
+    <remap from="static_map" to="$(arg static_map_keepout)" />
+  </node>
+
+  <include file="$(find oit_minibot_heavy_v6)/launch/include/move_base/move_base.xml">
+    <arg name="use_keepout" value="$(arg use_keepout)" />
+  </include>
   
   <include if="$(arg rosbag)" file="$(find oit_minibot_heavy_v6)/launch/record_rosbag.launch" required="true"/>
 </launch>
