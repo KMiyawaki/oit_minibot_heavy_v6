@@ -21,17 +21,11 @@ recovery_behaviors:
     type: 'back_and_turn_recovery/BackAndTurnRecovery'
   - name: 'third_clear_costmap_recovery'
     type: 'clear_costmap_recovery/ClearCostmapRecovery'
-  - name: 'third_back_and_turn_recovery'
-    type: 'back_and_turn_recovery/BackAndTurnRecovery'
 
 first_back_and_turn_recovery:
-  back_distance: 1.0
-  turn_degree: 0.698132
-
-second_back_and_turn_recovery:
   back_distance: 0.7
   turn_degree: 0.523598
 
-third_back_and_turn_recovery:
+second_back_and_turn_recovery:
   back_distance: 0.4
-  turn_degree: 0.523598
+  turn_degree: 0.0
