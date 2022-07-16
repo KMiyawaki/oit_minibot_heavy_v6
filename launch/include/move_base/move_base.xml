@@ -17,5 +17,7 @@
 
     <param if="$(arg use_keepout)" name="global_costmap/static_layer/map_topic" value="$(arg map_keepout)"/>
     <param if="$(arg use_keepout)" name="local_costmap/static_layer/map_topic" value="$(arg map_keepout)"/>
+    <param if="$(arg use_keepout)" name="local_costmap/static_layer/enabled" value="true"/>
+    <param unless="$(arg use_keepout)" name="local_costmap/static_layer/enabled" value="false"/>
   </node>  
 </launch>
