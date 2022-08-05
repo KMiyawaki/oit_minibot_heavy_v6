@@ -10,6 +10,7 @@ local_costmap:
   plugins:
    - {name: static_layer, type: "costmap_2d::StaticLayer"}
    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
+   - {name: objects_layer, type: "objects_costmap_layer_namespace::ObjectsCostmapLayer"}
    - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
   obstacle_layer:
     observation_sources: base_scan
