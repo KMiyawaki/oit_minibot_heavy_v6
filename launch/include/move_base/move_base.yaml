@@ -23,7 +23,7 @@ recovery_behaviors:
     type: 'clear_costmap_recovery/ClearCostmapRecovery'
 
 first_back_and_turn_recovery:
-  back_distance: 0.7
+  back_distance: 0.4
   turn_degree: 0.523598
 
 second_back_and_turn_recovery:
