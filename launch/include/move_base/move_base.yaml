@@ -24,7 +24,7 @@ recovery_behaviors:
 
 first_back_and_turn_recovery:
   back_distance: 0.7
-  turn_degree: 0.785398
+  turn_degree: 1.13446
 
 second_back_and_turn_recovery:
   back_distance: 0.4
