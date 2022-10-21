@@ -132,6 +132,16 @@ cd `rospack find oit_minibot_heavy_v6`/launch/real
 roslaunch navigation.launch map_name:=test rosbag:=true # 同上
 ```
 
+編集が終わったら以下で起動する。
+
+```shell
+$ cd
+# rosbag の記録なし
+$ navigation.sh
+# rosbag の記録あり
+$ navigation_rosbag.sh
+```
+
 自己位置推定、ゴール指定方法はこれまで通り。
 
 ## rosbagを使う
