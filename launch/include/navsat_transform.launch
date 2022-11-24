@@ -1,0 +1,11 @@
+<launch>
+    <arg name="imu_topic" default="imu" />
+    <arg name="gps_topic" default="fix" />
+    <arg name="odometry_topic" default="odom" />
+    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" clear_params="true">
+        <remap from="/imu/data" to="$(arg imu_topic)" />
+        <remap from="/gps/fix" to="$(arg gps_topic)" />
+        <remap from="/odometry/filtered" to="$(arg odometry_topic)" />
+    </node>
+</launch>
+

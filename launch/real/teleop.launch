@@ -10,6 +10,11 @@
   <arg name="use_velodyne" default="false" />
   <arg name="use_scan" default="false" />
   <arg name="use_imu" default="false" />
+  <arg name="use_gnss" default="false" />
+  <arg name="username" default="" />
+  <arg name="password" default="" />
+  <arg name="mountpoint" default="" />
+  <arg name="use_odom_filter" default="false" />
   <arg name="use_zed2" default="false" />
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/devices.launch">
@@ -21,7 +26,12 @@
     <arg name="use_velodyne" value="$(arg use_velodyne)" />
     <arg name="use_scan" value="$(arg use_scan)" />
     <arg name="use_imu" value="$(arg use_imu)" />
+    <arg name="use_gnss" value="$(arg use_gnss)" />
+    <arg name="use_odom_filter" value="$(arg use_odom_filter)" />
     <arg name="use_zed2" value="$(arg use_zed2)" />
+    <arg name="username" value="$(arg username)" />
+    <arg name="password" value="$(arg password)" />
+    <arg name="mountpoint" value="$(arg mountpoint)" />
   </include>
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/teleop_select.launch">
