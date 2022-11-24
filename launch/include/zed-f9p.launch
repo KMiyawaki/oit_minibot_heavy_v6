@@ -1,0 +1,16 @@
+<launch>
+    <arg name="serial_port" default="/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_GNSS_receiver-if00" />
+    <arg name="username" default="" />
+    <arg name="password" default="" />
+    <arg name="mountpoint" default="" />
+    
+    <node pkg="tf" type="static_transform_publisher" name="gps2base_link" args="-0.11 0 0.70750 0 0 0 base_link gps 100" />
+
+    <include file="$(find f9p_ichimill)/launch/gps_ichimill.launch" >
+        <arg name="serial_port" value="$(arg serial_port)" />
+        <arg name="username" value="$(arg username)" />
+        <arg name="password" value="$(arg password)" />
+        <arg name="mountpoint" value="$(arg mountpoint)" />
+    </include>
+
+</launch>
