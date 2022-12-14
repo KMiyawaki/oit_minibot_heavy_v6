@@ -11,7 +11,6 @@
   <arg name="username" default="" />
   <arg name="password" default="" />
   <arg name="mountpoint" default="" />
-  <arg name="use_odom_filter" default="false" />
   <arg name="use_rplidar" default="true" />
   <arg name="use_zed2" default="false" />
   <arg name="use_velodyne" default="false" />
@@ -21,7 +20,6 @@
     <arg name="use_scan" value="$(arg use_scan)" />
     <arg name="use_imu" value="$(arg use_imu)" />
     <arg name="use_gnss" value="$(arg use_gnss)" />
-    <arg name="use_odom_filter" value="$(arg use_odom_filter)" />
     <arg name="use_rplidar" value="$(arg use_rplidar)" />
     <arg name="use_zed2" value="$(arg use_zed2)" />
     <arg name="use_velodyne" value="$(arg use_velodyne)" />

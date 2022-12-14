@@ -1,5 +1,6 @@
 <launch>
   <arg name="roboclaw_settings" default="$(find oit_minibot_heavy_v6)/config/minibot_heavy_v6.yaml" />
+  <arg name="use_gnss" default="false" />
 
   <node pkg="oit_roboclaw_driver" type="oit_roboclaw_driver_node.py" name="oit_roboclaw_driver_node" output="screen">
     <!-- load from yaml -->
@@ -15,5 +16,6 @@
     <param name="~linear_max" value="0.6"/>
     <!--Radians-->
     <param name="~angular_max" value="1.05"/>
+    <remap if="$(arg use_gnss)" from="odom" to="raw_odom" />
   </node>
 </launch>
