@@ -16,7 +16,7 @@ window
 # load an environment bitmap
 floorplan
 (
-  bitmap "./arnd_oit_border.png"
+  bitmap "././arnd_oit_border.png"
   size [246.900000 128.500000 1.5]
   pose [-1.55 -47.95 0 0 0]
 )
