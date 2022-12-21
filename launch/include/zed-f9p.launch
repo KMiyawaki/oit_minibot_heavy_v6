@@ -13,4 +13,6 @@
         <arg name="mountpoint" value="$(arg mountpoint)" />
     </include>
 
+    <include file="$(find oit_minibot_heavy_v6)/launch/include/navsat_transform.launch" />
+
 </launch>

@@ -8,7 +8,6 @@
   <arg name="use_scan" default="false" />
   <arg name="use_imu" default="false" />
   <arg name="use_gnss" default="false" />
-  <arg name="use_odom_filter" default="false" />
   <arg name="use_filter" default="false" />
   <arg name="use_zed2" default="false" />
   <arg name="username" default="" />
@@ -17,6 +16,7 @@
 
   <include file="$(find oit_minibot_heavy_v6)/launch/include/roboclaw.launch">
     <arg name="roboclaw_settings" value="$(arg roboclaw_settings)" />
+    <arg name="use_gnss" value="$(arg use_gnss)" />
   </include>
 
   <include if="$(arg use_rplidar)" file="$(find oit_minibot_heavy_v6)/launch/include/rplidar.launch" />
@@ -33,8 +33,6 @@
     <arg name="password" value="$(arg password)" />
     <arg name="mountpoint" value="$(arg mountpoint)" />
   </include>
-
-  <include if="$(arg use_odom_filter)" file="$(find oit_minibot_heavy_v6)/launch/include/navsat_transform.launch" />
 
   <include if="$(arg use_zed2)" file="$(find oit_minibot_heavy_v6)/launch/include/zed2.launch" />
 
