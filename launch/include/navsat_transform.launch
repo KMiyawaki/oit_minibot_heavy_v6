@@ -4,6 +4,7 @@
     <arg name="odometry_topic" default="raw_odom" />
     <arg name="out_odometry_topic" default="odom" />
     <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" clear_params="true">
+        <rosparam command="load" file="$(find oit_minibot_heavy_v6)/config/navsat_transform.yaml" />
         <remap from="/imu/data" to="$(arg imu_topic)" />
         <remap from="/gps/fix" to="$(arg gps_topic)" />
         <remap from="/odometry/filtered" to="$(arg odometry_topic)" />
